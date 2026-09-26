@@ -10,7 +10,7 @@
 ### 1.2 Virtual Environment & Installation
 ```bash
 # 1. Clone repository
-git clone https://github.com/Hemantkumar-Lakhane/portfolio.git ram-cloud-security
+git clone https://github.com/Hemantkumar-Lakhane/ram-cloud-security.git
 cd ram-cloud-security
 
 # 2. Create Python virtual environment
