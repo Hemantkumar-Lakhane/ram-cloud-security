@@ -1,0 +1,35 @@
+{
+  "eventVersion": "1.08",
+  "userIdentity": {
+    "type": "IAMUser",
+    "principalId": "AIDAEXAMPLEUSER003",
+    "arn": "arn:aws:iam::123456789012:user/attacker-charlie",
+    "accountId": "123456789012",
+    "userName": "attacker-charlie"
+  },
+  "eventTime": "2026-09-27T02:48:22Z",
+  "eventSource": "iam.amazonaws.com",
+  "eventName": "AttachUserPolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "203.0.113.195",
+  "userAgent": "Boto3/1.34.0 Python/3.11.0 Linux/5.15",
+  "requestParameters": {
+    "userName": "attacker-charlie",
+    "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+  },
+  "responseElements": null,
+  "requestID": "req-iam-003-abc",
+  "eventID": "evt-iam-003-xyz",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management",
+  "resources": [
+    {
+      "accountId": "123456789012",
+      "type": "AWS::IAM::User",
+      "ARN": "arn:aws:iam::123456789012:user/attacker-charlie"
+    }
+  ]
+}

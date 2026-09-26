@@ -60,22 +60,22 @@ For complete technical specifications, see [ARCHITECTURE.md](file:///c:/Users/la
 
 ## 4. Current Development Status
 
-- **Current Phase:** **PHASE 0 (Project Setup and Architecture Scaffolding Completed)**
-- **Next Phase:** **PHASE 1 (Security Telemetry Ingestion - CloudTrail Focus)**
+- **Current Phase:** **PHASE 1 (Security Telemetry Ingestion — CloudTrail Focus Completed)**
+- **Next Phase:** **PHASE 2 (Rule Baseline & Data Normalization Pipeline)**
 
 | Phase | Description | Status |
 |---|---|---|
 | **Phase 0** | Project Setup, Architecture Scaffolding & Foundational Contracts | **COMPLETED** |
-| **Phase 1** | Security Telemetry Ingestion (AWS CloudTrail) | Planned (Next) |
-| **Phase 2** | Data Storage & Normalization Layer | Planned |
+| **Phase 1** | Security Telemetry Ingestion (AWS CloudTrail) | **COMPLETED** |
+| **Phase 2** | Rule Baseline Engine & Deterministic Detection | Planned (Next) |
 | **Phase 3** | Feature Engineering Pipeline | Planned |
-| **Phase 4** | Rule-Based Detection Engine | Planned |
-| **Phase 5** | Machine Learning Anomaly Detection Engine | Planned |
-| **Phase 6** | Hybrid Detection Integration | Planned |
-| **Phase 7** | Context Enrichment & Risk Prioritization | Planned |
-| **Phase 8** | Security Findings Presentation & Evidence Store | Planned |
-| **Phase 9** | Controlled Response Orchestration (Safe Actions) | Planned |
-| **Phase 10**| Evaluation, Benchmarking & Research Documentation | Planned |
+| **Phase 4** | Machine Learning Anomaly Detection Engine | Planned |
+| **Phase 5** | Hybrid Detection Integration (Rules + ML) | Planned |
+| **Phase 6** | Identity Context, Temporal Reasoning & Evidence Fusion | Planned |
+| **Phase 7** | Security Operations & Findings Dashboard | Planned |
+| **Phase 8** | Controlled & Safe Response Orchestration | Planned |
+| **Phase 9** | Research Evaluation & Benchmarks | Planned |
+| **Phase 10**| Final Research Documentation & Demonstration | Planned |
 
 See [PROJECT_PLAN.md](file:///c:/Users/lakha/ml_ram_antivirous/PROJECT_PLAN.md) for milestones and definitions of done.
 

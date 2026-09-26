@@ -1,0 +1,45 @@
+{
+  "eventVersion": "1.08",
+  "userIdentity": {
+    "type": "IAMUser",
+    "principalId": "AIDAEXAMPLEUSER003",
+    "arn": "arn:aws:iam::123456789012:user/attacker-charlie",
+    "accountId": "123456789012",
+    "userName": "attacker-charlie"
+  },
+  "eventTime": "2026-09-27T02:52:45Z",
+  "eventSource": "s3.amazonaws.com",
+  "eventName": "GetObject",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "203.0.113.195",
+  "userAgent": "aws-cli/2.15.0 Python/3.11.0 Linux/5.15",
+  "requestParameters": {
+    "bucketName": "company-confidential-financials",
+    "key": "q3_financial_dump.csv.gz"
+  },
+  "responseElements": null,
+  "additionalEventData": {
+    "SignatureVersion": "SigV4",
+    "CipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+    "bytesTransferredIn": 0,
+    "bytesTransferredOut": 52428800
+  },
+  "requestID": "req-s3-004-abc",
+  "eventID": "evt-s3-004-xyz",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data",
+  "resources": [
+    {
+      "type": "AWS::S3::Object",
+      "ARN": "arn:aws:s3:::company-confidential-financials/q3_financial_dump.csv.gz"
+    },
+    {
+      "accountId": "123456789012",
+      "type": "AWS::S3::Bucket",
+      "ARN": "arn:aws:s3:::company-confidential-financials"
+    }
+  ]
+}

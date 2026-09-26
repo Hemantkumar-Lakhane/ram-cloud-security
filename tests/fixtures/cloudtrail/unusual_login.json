@@ -1,0 +1,30 @@
+{
+  "eventVersion": "1.08",
+  "userIdentity": {
+    "type": "IAMUser",
+    "principalId": "AIDAEXAMPLEUSER002",
+    "arn": "arn:aws:iam::123456789012:user/admin-bob",
+    "accountId": "123456789012",
+    "userName": "admin-bob"
+  },
+  "eventTime": "2026-09-27T02:45:10Z",
+  "eventSource": "signin.amazonaws.com",
+  "eventName": "ConsoleLogin",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "203.0.113.195",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0",
+  "requestParameters": null,
+  "responseElements": {
+    "ConsoleLogin": "Success"
+  },
+  "additionalEventData": {
+    "MFAUsed": "No",
+    "MobileVersion": "No"
+  },
+  "eventID": "evt-login-002-xyz",
+  "readOnly": false,
+  "eventType": "AwsConsoleSignIn",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}

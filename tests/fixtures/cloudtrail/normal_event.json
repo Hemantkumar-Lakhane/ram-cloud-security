@@ -1,0 +1,27 @@
+{
+  "eventVersion": "1.08",
+  "userIdentity": {
+    "type": "IAMUser",
+    "principalId": "AIDAEXAMPLEUSER001",
+    "arn": "arn:aws:iam::123456789012:user/dev-alice",
+    "accountId": "123456789012",
+    "userName": "dev-alice"
+  },
+  "eventTime": "2026-09-27T08:15:30Z",
+  "eventSource": "ec2.amazonaws.com",
+  "eventName": "DescribeInstances",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "198.51.100.25",
+  "userAgent": "aws-cli/2.15.0 Python/3.11.0 Linux/5.15",
+  "requestParameters": {
+    "instancesSet": {}
+  },
+  "responseElements": null,
+  "requestID": "req-ec2-001-abc",
+  "eventID": "evt-ec2-001-xyz",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}

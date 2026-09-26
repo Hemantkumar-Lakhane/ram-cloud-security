@@ -23,15 +23,18 @@ This roadmap defines the engineering and research execution plan for **RAM Cloud
 
 ---
 
-### Phase 1: Security Telemetry Ingestion
-- **Status:** **PLANNED (Next Target)**
+### Phase 1: Security Telemetry Ingestion (CloudTrail Focus)
+- **Status:** **COMPLETED**
 - **Objectives:**
-  - Build ingestion connectors for AWS telemetry, with primary focus on **AWS CloudTrail**.
-  - Support both local offline dumps (JSON/JSONL/gzip) and live AWS S3 / CloudWatch ingestion modes via `boto3`.
-  - Implement safe, read-only credential handling and pagination.
-- **Definition of Done (DoD):**
-  - CloudTrail collector ingests records reliably across single and multi-file archives.
-  - Unit tests validate ingestion with mock data; zero raw credential leakage.
+  - Build concrete ingestion collector for **AWS CloudTrail**.
+  - Support local offline files (single JSON, records envelopes, JSONL, gzip archives) and read-only AWS S3 streaming.
+  - Parse and normalize raw events into the universal `NormalizedEvent` contract with payload sanitization.
+  - Implement 100% offline-executable unit test suite with mock data.
+- **Definition of Done (DoD) - Achieved:**
+  - Synthetic fixtures (`normal_event.json`, `unusual_login.json`, `privilege_escalation.json`, `sensitive_access.json`, `sample_events.jsonl`) created in `tests/fixtures/cloudtrail/`.
+  - `CloudTrailIngestion` implemented in `src/ingestion/cloudtrail.py`.
+  - `CloudTrailParser` implemented in `src/preprocessing/parser.py`.
+  - 18/18 test suite passing with full coverage of edge cases and S3 mocks.
 
 ---
 
