@@ -38,23 +38,38 @@ This roadmap defines the engineering and research execution plan for **RAM Cloud
 
 ---
 
-### Phase 2: Data Storage & Normalization Layer
-- **Status:** **PLANNED**
+### Phase 1.5: Real Dataset Acquisition & Exploratory Data Analysis
+- **Status:** **COMPLETED**
 - **Objectives:**
-  - Store raw telemetry in a structured data lake format (`data/raw/`).
-  - Parse and normalize raw heterogenous logs into an OCSF-compatible intermediate schema (`NormalizedEvent`).
-  - Handle missing fields, timezone standardizations (UTC ISO 8601), and identity mappings.
-- **Definition of Done (DoD):**
-  - Raw-to-normalized parser achieves 100% field mapping parity for standard CloudTrail management events.
-  - Automated tests verify normalization against malformed and edge-case logs.
+  - Acquire real CloudTrail dataset with multi-stage attack telemetry (`invictus-ir/aws_dataset`, 2,900 events across 29 AWS services).
+  - Execute automated profiling and EDA workflow (`experiments/eda_cloudtrail.py`).
+  - Document class distribution, error rates, MITRE tactics, and anti-leakage guardrails (`docs/REAL_DATASET_REPORT.md`).
+- **Definition of Done (DoD) - Achieved:**
+  - 100% normalization parity achieved (2,900/2,900 events, 0 errors).
+  - Strict leakage guardrails established (no training on raw userAgent strings).
 
 ---
 
-### Phase 3: Feature Engineering Pipeline
-- **Status:** **PLANNED**
+### Phase 2: Deterministic Rule Baseline Engine (Baseline A: Rules Only)
+- **Status:** **COMPLETED**
+- **Objectives:**
+  - Implement modular deterministic detection rules across IAM (`src/detection/rules/iam_rules.py`), Configuration (`src/detection/rules/configuration_rules.py`), and Exposure (`src/detection/rules/exposure_rules.py`).
+  - Build `RuleEngine` registry and evaluate against the real Stratus Red Team dataset (`experiments/evaluate_rule_baseline.py`).
+  - Measure quantitative baseline: findings count, TP/FP, event-level precision, recall, F1-score, detection latency, and failure modes.
+  - Document findings in `docs/PHASE2_RULE_BASELINE_REPORT.md`.
+- **Definition of Done (DoD) - Achieved:**
+  - 11 deterministic rules implemented and 100% unit-tested (25/25 tests passing).
+  - Baseline A evaluated on real data: 42 findings, Precision: 54.76%, Recall: 2.01%, F1: 0.0387, Time-to-first-alert: 6.0s.
+  - Failure analysis documented: rules catch hard violations but miss 97.99% of adversarial activity (discovery, credential access, lateral movement).
+
+---
+
+### Phase 3: Feature Engineering Pipeline (Next Target)
+- **Status:** **PLANNED (Next Target)**
 - **Objectives:**
   - Extract temporal, categorical, and behavioral features from normalized event streams.
-  - Compute entity baselines: API call frequency, error rate ratios, unusual operating hours, novel user agent tokens, geographic IP entropy, and high-risk API usage (e.g. IAM permission changes, security group alterations).
+  - Compute entity baselines: API call frequency, error rate ratios, high-risk API transition probabilities, privilege change count, and temporal burst entropy.
+  - Enforce anti-leakage constraints (zero raw userAgent tokens).
   - Persist ML-ready feature matrices into `data/features/`.
 - **Definition of Done (DoD):**
   - Deterministic feature pipeline transforms normalized events into numeric feature vectors without data leakage.

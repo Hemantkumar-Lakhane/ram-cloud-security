@@ -55,3 +55,10 @@ Every architectural, technical, or research direction decision is documented her
 - **Context:** Synthetic fixtures in `tests/fixtures/` must only be used for parser/unit tests and never for model training or research claims.
 - **Decision:** Acquired and profiled `invictus-ir/aws_dataset` (2,900 genuine CloudTrail events generated via DataDog Stratus Red Team). Established strict leakage guardrails prohibiting training on raw user-agent strings.
 - **Consequences:** Enables research-valid ML feature engineering and baseline benchmarking on real multi-stage attack telemetry.
+
+### [DEC-008] Phase 2 Scope: Deterministic Rule Baseline Experiment (Baseline A)
+- **Date:** 2026-09-28
+- **Status:** APPROVED
+- **Context:** Establish a quantitative baseline for rules-only detection before designing ML or fusion models.
+- **Decision:** Implemented 11 modular deterministic rules (`iam_rules.py`, `configuration_rules.py`, `exposure_rules.py`) and evaluated on the real dataset without userAgent leakages. Proved empirically that while rules achieve fast detection on hard violations (6.0s), they suffer 2.01% recall and miss 97.99% of adversarial activities (reconnaissance, credential access).
+- **Consequences:** Establishes Baseline A metrics against which future ML (Baseline B) and Hybrid Fusion (Proposed) will be evaluated.

@@ -60,16 +60,17 @@ For complete technical specifications, see [ARCHITECTURE.md](file:///c:/Users/la
 
 ## 4. Current Development Status
 
-- **Current Phase:** **PHASE 1 (Security Telemetry Ingestion — CloudTrail Focus Completed)**
-- **Next Phase:** **PHASE 2 (Rule Baseline & Data Normalization Pipeline)**
+- **Current Phase:** **PHASE 2 (Deterministic Rule Baseline Experiment — Baseline A Completed)**
+- **Next Phase:** **PHASE 3 (Feature Engineering Pipeline)**
 
 | Phase | Description | Status |
 |---|---|---|
 | **Phase 0** | Project Setup, Architecture Scaffolding & Foundational Contracts | **COMPLETED** |
 | **Phase 1** | Security Telemetry Ingestion (AWS CloudTrail) | **COMPLETED** |
-| **Phase 2** | Rule Baseline Engine & Deterministic Detection | Planned (Next) |
-| **Phase 3** | Feature Engineering Pipeline | Planned |
-| **Phase 4** | Machine Learning Anomaly Detection Engine | Planned |
+| **Phase 1.5** | Real Dataset Acquisition & Exploratory Data Analysis | **COMPLETED** |
+| **Phase 2** | Deterministic Rule Baseline Engine (Baseline A: Rules Only) | **COMPLETED** |
+| **Phase 3** | Feature Engineering Pipeline (Behavioral & Temporal Signals) | Planned (Next) |
+| **Phase 4** | Machine Learning Anomaly Detection Engine (Baseline B: ML Only)| Planned |
 | **Phase 5** | Hybrid Detection Integration (Rules + ML) | Planned |
 | **Phase 6** | Identity Context, Temporal Reasoning & Evidence Fusion | Planned |
 | **Phase 7** | Security Operations & Findings Dashboard | Planned |
