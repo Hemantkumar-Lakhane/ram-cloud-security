@@ -53,7 +53,19 @@ To maintain research integrity and prevent overclaiming, the following are expli
 
 ---
 
-## 5. Research Questions (RQs)
+## 5. Empirical Grounding & Dataset Mapping (Phase 1.5 Real Dataset)
+
+The research question is empirically grounded in the acquired real **Stratus Red Team CloudTrail Dataset** (`invictus-ir/aws_dataset`, 2,900 events across 29 services):
+1. **Multi-Stage Attack Sequences Present:**
+   - Real multi-step adversary kill chains (Discovery $\to$ Credential Access $\to$ Privilege Escalation $\to$ Defense Evasion) executed on live AWS services.
+2. **Identity & Temporal Tracking:**
+   - 13 distinct IAM principals/roles operating over a 55-minute continuous timeline, allowing granular temporal sliding-window feature extraction.
+3. **Deterministic vs. Behavioral Boundary:**
+   - Clear deterministic policy violations (`StopLogging`, `AttachUserPolicy (AdministratorAccess)`, open security groups) coexist with stealthy behavioral API sequences (`GetPasswordData`, `GetSecretValue` after mass `Describe*` calls).
+
+---
+
+## 6. Research Questions (RQs)
 
 - **RQ1 (Multi-Source Synergy):** Does fusing heterogeneous cloud security signals (audit logs, IAM context, configuration state, vulnerability posture) improve threat detection accuracy compared with isolated single-telemetry detectors?
 - **RQ2 (Context & False Positive Reduction):** Does incorporating temporal context and identity/resource relationships reduce false-positive rates compared with individual event-level anomaly detectors?

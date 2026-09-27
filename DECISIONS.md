@@ -48,3 +48,10 @@ Every architectural, technical, or research direction decision is documented her
 - **Context:** ML and fusion models require clean, deterministic, normalized data.
 - **Decision:** Implement concrete `CloudTrailIngestion` supporting local JSON, JSONL, gzip archives, and read-only S3 log streaming, normalizing strictly into the `NormalizedEvent` schema with 100% offline test coverage.
 - **Consequences:** Solidifies data foundation before starting feature extraction or model training.
+
+### [DEC-007] Phase 1.5 Scope: Real Dataset Acquisition & Empirical EDA
+- **Date:** 2026-09-28
+- **Status:** APPROVED
+- **Context:** Synthetic fixtures in `tests/fixtures/` must only be used for parser/unit tests and never for model training or research claims.
+- **Decision:** Acquired and profiled `invictus-ir/aws_dataset` (2,900 genuine CloudTrail events generated via DataDog Stratus Red Team). Established strict leakage guardrails prohibiting training on raw user-agent strings.
+- **Consequences:** Enables research-valid ML feature engineering and baseline benchmarking on real multi-stage attack telemetry.

@@ -1,68 +1,57 @@
-# RAM Cloud Security — Dataset Evaluation & Strategy
+# RAM Cloud Security — Dataset Strategy & Empirical Evaluation
 
-## 1. Dataset Strategy Principles
+## 1. Dataset Strategy & Principles
 
-1. **No Blind Ingestion:** Do not download or force datasets before evaluating field availability, schema compatibility with AWS telemetry, and attack scenario realism.
-2. **Telemetry Alignment:** The primary dataset must align with AWS CloudTrail audit logs, IAM events, and network/workload behavior.
-3. **Realistic Class Imbalance:** Security datasets exhibit extreme skew (anomalies are rare). Models must be evaluated with precision, recall, and PR-AUC rather than raw accuracy.
-
----
-
-## 2. Candidate Datasets Overview
-
-| Dataset | Primary Telemetry | Suitability | Evaluation Status |
-|---|---|---|---|
-| **DataDog Grimoire (AWS CloudTrail)** | AWS CloudTrail Audit Logs & IAM activity | **Primary Candidate (Highest)** | Selected for Initial Evaluation |
-| **TON-IoT** | Network Flow, OS logs, Telemetry | Secondary / Network Workload | Reserved for network anomaly benchmarking |
-| **DARPA OpTC** | Host-level endpoint telemetry & audit logs | Secondary / Host Workload | Reserved for host execution anomalies |
-| **CTU-SME-11** | NetFlow / PCAP enterprise traffic | Secondary / Network Flow | Reserved for VPC Flow Log extensions |
+1. **Synthetic Data Guardrail:** Synthetic fixtures (under `tests/fixtures/`) are strictly restricted to parser, ingestion, and unit tests. They are **never** used for model training, validation, research evaluation, or performance claims.
+2. **Telemetry Alignment:** The primary dataset must consist of genuine AWS CloudTrail audit logs with realistic multi-service API activity, accurate timestamps, and representative user identities.
+3. **Reproducibility & Open Licensing:** Datasets must possess clear provenance and open licenses (e.g. MIT, Apache 2.0).
 
 ---
 
-## 3. Detailed Inspection of Primary Candidate
+## 2. Selected Real Dataset (Acquired & Validated in Phase 1.5)
 
-### DataDog Grimoire / CloudTrail Audit Logs
-- **Source:** Cloud security research and AWS audit log telemetry.
-- **Key Fields Required for Ingestion:**
-  - `eventTime`: Timestamp in ISO 8601 UTC format.
-  - `eventSource`: AWS service generating the event (e.g. `iam.amazonaws.com`, `s3.amazonaws.com`, `ec2.amazonaws.com`).
-  - `eventName`: API action executed (e.g. `CreateAccessKey`, `PutBucketPolicy`, `AuthorizeSecurityGroupIngress`).
-  - `userIdentity`: Principal type (`IAMUser`, `AssumedRole`, `Root`), ARN, and account ID.
-  - `sourceIPAddress`: Client IP address.
-  - `userAgent`: Client caller signature (e.g. AWS CLI, boto3, Terraform, Browser).
-  - `errorCode` / `errorMessage`: Access denial signals (e.g. `AccessDenied`).
-  - `requestParameters` / `responseElements`: Contextual API parameters.
-- **Evaluation Criteria:**
-  - Presence of both baseline (benign operational activity) and realistic attack scenarios (credential exfiltration, privilege escalation, persistence, discovery).
-  - Consistency of JSON formatting and schema compliance.
-  - Absence of synthetic bias or trivial artifacts.
+### Stratus Red Team CloudTrail Attack Dataset (`invictus-ir/aws_dataset`)
+- **Source & Provenance:** Published by Invictus Incident Response ([GitHub](https://github.com/invictus-ir/aws_dataset)). Generated via DataDog Stratus Red Team adversary emulation on live AWS infrastructure.
+- **License:** MIT License.
+- **Local Storage:** `data/raw/stratus_cloudtrail/CloudTrail/` (55 JSON log files, preserved unmodified).
+- **Parity with Schema:** 2,900 / 2,900 events successfully normalized into `NormalizedEvent` (0 parsing errors).
 
----
-
-## 4. Evaluation Workflow
-
-```
-Candidate Dataset Selection
-            │
-            ▼
-Schema & Field Inspection (Verify CloudTrail schema parity)
-            │
-            ▼
-Data Quality & Completeness Audit (Missing values, time distribution)
-            │
-            ▼
-Label & Scenario Analysis (Normal vs. Malicious event distribution)
-            │
-            ▼
-Normalization to OCSF / NormalizedEvent Schema
-            │
-            ▼
-Feature Matrix Generation & Model Training Pipeline
-```
+### Empirical Summary (from EDA in `experiments/results/eda_summary.json`):
+- **Total Events:** 2,900
+- **Time Duration:** 2023-07-10 11:42:18 UTC to 12:37:50 UTC (55.5 minutes continuous session).
+- **Service Breadth:** 29 distinct AWS services (`ec2`, `ssm`, `iam`, `s3`, `kms`, `secretsmanager`, `rds`, `sts`, `cloudtrail`, `guardduty`, `securityhub`, etc.).
+- **Event Types:** 260 distinct API event names.
+- **Identities:** 13 distinct IAM principals (2 IAM Users, 10 Assumed Roles, 1 AWS Service).
+- **Activity Breakdown:**
+  - Stratus Red Team Detonations: 1,146 events (39.52%)
+  - Terraform Infrastructure Setup/Teardown: 1,938 events (66.83%)
+  - Standard AWS Background Calls: 748 events (25.79%)
+- **Error Profile:** 300 errors (10.34% error rate), including `ThrottlingException`, `UnauthorizedOperation`, and `AccessDenied`.
 
 ---
 
-## 5. Next Action Items for Phase 1 & 2
-- Construct sample synthetic CloudTrail fixtures for unit testing in `tests/fixtures/`.
-- Download and inspect a bounded slice of the DataDog Grimoire dataset.
-- Document exact field mappings in `docs/data_dictionary.md`.
+## 3. Attack Scenarios & Kill-Chain Mapping
+
+The real dataset captures adversarial activity across multiple MITRE ATT&CK tactics:
+- **Discovery (380+ events):** `DescribeRouteTables`, `DescribeParameters`, `DescribeAccountAttributes`, `DescribeInstanceInformation`, `DescribeDBInstances`, `DescribeSecurityGroups`, `DescribeTrails`, `GetCallerIdentity`, `ListAccessKeys`.
+- **Credential Access (240+ events):** `GetPasswordData`, `GetSecretValue`, `GetParameter`, `Decrypt`, `PutSecretValue`.
+- **Privilege Escalation & Persistence (100+ events):** `AttachUserPolicy` (`AdministratorAccess`), `PutRolePolicy`, `CreateAccessKey`, `CreateUser`, `CreateLoginProfile`, `UpdateAssumeRolePolicy`, `AddRoleToInstanceProfile`.
+- **Defense Evasion (25+ events):** `StopLogging`, `DeleteTrail`, `DeleteFlowLogs`, `DeleteBucketPolicy`, `RevokeSecurityGroupEgress`.
+- **Execution (10+ events):** `SendCommand` (SSM agent execution on EC2), `RunInstances`.
+
+---
+
+## 4. Leakage Risks & Engineering Guardrails
+
+- **User-Agent Leakage:** Raw `userAgent` strings contain explicit indicators (`stratus-red-team`, `terraform`). Models must **never** be trained on raw user-agent string tokens.
+- **Safe Feature Extraction:** Features must strictly rely on behavioral dynamics: API call rates, temporal burst entropy, failure ratios, privilege escalation transitions, and high-risk API frequencies.
+
+---
+
+## 5. Candidate Datasets for Future Benchmark Extensions
+
+| Dataset | Telemetry Type | Purpose in Future Phases |
+|---|---|---|
+| **TON-IoT** | Network Flow / Host Telemetry | Reserved for multi-modal network flow & workload extension benchmarks |
+| **DARPA OpTC** | Enterprise Endpoint Audit Logs | Reserved for host-level process lineage and relationship modeling |
+| **CTU-SME-11** | Enterprise NetFlow / PCAP | Reserved for VPC Flow Log evaluation |
