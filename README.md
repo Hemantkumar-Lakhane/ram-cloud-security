@@ -137,9 +137,29 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-### Running Tests
+### Running the Backend Tests
 ```bash
 pytest -v
 ```
 
-For detailed developer instructions, see [DEVELOPMENT.md](file:///c:/Users/lakha/ml_ram_antivirous/DEVELOPMENT.md).
+### Running the Frontend Console (React + TypeScript + Vite)
+```bash
+# 1. Navigate to frontend directory
+cd frontend
+
+# 2. Install dependencies (if not already installed)
+npm install
+
+# 3. Start local development server
+npm run dev
+# Live at: http://localhost:5173/
+
+# 4. Build for production
+npm run build
+```
+
+For complete technical documentation, UI design systems, and data contracts, see:
+- [UI_SPECIFICATION.md](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_SPECIFICATION.md) — Master UI/UX Design Index
+- [UI_INFORMATION_ARCHITECTURE.md](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_INFORMATION_ARCHITECTURE.md) — 7-Domain Route Map & Navigation
+- [UI_DATA_CONTRACTS.md](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_DATA_CONTRACTS.md) — Real Telemetry & Metric Bindings
+- [DEVELOPMENT.md](file:///c:/Users/lakha/ml_ram_antivirous/DEVELOPMENT.md) — Detailed developer setup guide.

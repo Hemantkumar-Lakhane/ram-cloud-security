@@ -1,0 +1,93 @@
+{
+  "experiment": "Baseline A: Deterministic Rules Only",
+  "dataset": "Stratus Red Team CloudTrail Dataset (invictus-ir/aws_dataset)",
+  "total_events_evaluated": 2900,
+  "ground_truth": {
+    "total_attack_events": 1146,
+    "total_benign_events": 1754,
+    "attack_prevalence_pct": 39.52
+  },
+  "detection_summary": {
+    "total_findings_generated": 42,
+    "true_positive_findings": 23,
+    "false_positive_findings": 19,
+    "distinct_attack_events_detected": 23,
+    "distinct_attack_events_missed": 1123,
+    "distinct_benign_events_flagged": 19
+  },
+  "event_level_metrics": {
+    "precision": 0.5476,
+    "recall": 0.0201,
+    "f1_score": 0.0387,
+    "detection_rate_pct": 2.01,
+    "false_discovery_rate_pct": 45.24
+  },
+  "temporal_metrics": {
+    "first_attack_timestamp": "2023-07-10 11:54:33+00:00",
+    "first_detection_timestamp": "2023-07-10 11:54:39+00:00",
+    "time_to_first_alert_seconds": 6.0
+  },
+  "findings_by_rule": {
+    "RULE-IAM-002": 5,
+    "RULE-CFG-001": 6,
+    "RULE-CFG-002": 1,
+    "RULE-CFG-004": 17,
+    "RULE-EXP-002": 2,
+    "RULE-EXP-001": 2,
+    "RULE-IAM-004": 2,
+    "RULE-IAM-005": 2,
+    "RULE-CFG-003": 1,
+    "RULE-IAM-001": 2,
+    "RULE-IAM-003": 2
+  },
+  "findings_by_severity": {
+    "CRITICAL": 15,
+    "HIGH": 25,
+    "MEDIUM": 2
+  },
+  "findings_by_mitre_technique": {
+    "T1098.001": 5,
+    "T1562.001": 8,
+    "T1486": 17,
+    "T1562": 2,
+    "T1133": 2,
+    "T1136.003": 2,
+    "T1098": 6
+  },
+  "detected_attack_apis_sample": {
+    "PutRolePolicy": 5,
+    "StopLogging": 3,
+    "AuthorizeSecurityGroupIngress": 2,
+    "RevokeSecurityGroupEgress": 2,
+    "CreateAccessKey": 2,
+    "UpdateAssumeRolePolicy": 2,
+    "CreateLoginProfile": 2,
+    "DeleteFlowLogs": 1,
+    "DeleteTrail": 1,
+    "DeleteBucketPolicy": 1,
+    "AttachRolePolicy": 1,
+    "AttachUserPolicy": 1
+  },
+  "missed_attack_apis_top": {
+    "DescribeRouteTables": 69,
+    "PutParameter": 67,
+    "GetUser": 57,
+    "DescribeParameters": 48,
+    "ListTagsForResource": 45,
+    "GetParameter": 42,
+    "GetSecretValue": 40,
+    "DescribeAccountAttributes": 34,
+    "DescribeNatGateways": 32,
+    "GetPasswordData": 29,
+    "DescribeInstanceInformation": 27,
+    "DescribeDBInstances": 25,
+    "AssumeRole": 23,
+    "DescribeInstanceAttribute": 21,
+    "DescribeSubnets": 20,
+    "CreateSecret": 20,
+    "PutSecretValue": 20,
+    "GetResourcePolicy": 20,
+    "DescribeSecret": 20,
+    "ListAttachedRolePolicies": 17
+  }
+}

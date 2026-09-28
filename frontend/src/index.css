@@ -1,0 +1,520 @@
+/* ==========================================================================
+   RAM Cloud Security — Anti-Slop Enterprise Design System Stylesheet
+   ========================================================================== */
+
+:root {
+  /* Canvas & Neutral Light Surfaces */
+  --bg-canvas: #f9fafb;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f3f4f6;
+  --bg-muted: #f3f4f6;
+  --bg-hover: #f3f4f6;
+  
+  /* Borders */
+  --border-subdued: #e5e7eb;
+  --border-strong: #d1d5db;
+  --border-focus: #2563eb;
+
+  /* Typography */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-inverted: #ffffff;
+
+  /* Semantic Severity Tokens */
+  --sev-crit-text: #991b1b;
+  --sev-crit-bg: #fef2f2;
+  --sev-crit-border: #f87171;
+  --sev-crit-dot: #dc2626;
+
+  --sev-high-text: #9a3412;
+  --sev-high-bg: #fff7ed;
+  --sev-high-border: #fdba74;
+  --sev-high-dot: #ea580c;
+
+  --sev-med-text: #854d0e;
+  --sev-med-bg: #fefce8;
+  --sev-med-border: #fde047;
+  --sev-med-dot: #ca8a04;
+
+  --sev-low-text: #1e40af;
+  --sev-low-bg: #eff6ff;
+  --sev-low-border: #93c5fd;
+  --sev-low-dot: #2563eb;
+
+  --sev-info-text: #374151;
+  --sev-info-bg: #f3f4f6;
+  --sev-info-border: #d1d5db;
+  --sev-info-dot: #6b7280;
+
+  /* Status Colors */
+  --status-success-text: #065f46;
+  --status-success-bg: #ecfdf5;
+  --status-success-border: #6ee7b7;
+
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Layout Geometry */
+  --header-height: 52px;
+  --sidebar-width: 240px;
+  --sidebar-collapsed: 64px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Typography & Basic Primitives
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 1.25rem; line-height: 1.75rem; }
+h2 { font-size: 1.05rem; line-height: 1.5rem; }
+h3 { font-size: 0.95rem; line-height: 1.35rem; }
+
+p { color: var(--text-secondary); }
+code, pre { font-family: var(--font-mono); font-size: 12px; }
+
+/* ==========================================================================
+   Application Shell Layout
+   ========================================================================== */
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-canvas);
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--bg-surface);
+  border-right: 1px solid var(--border-subdued);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  transition: width 0.2s ease;
+}
+
+.sidebar-header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border-subdued);
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-domain-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-domain-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  height: var(--header-height);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subdued);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.env-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--border-subdued);
+  border-radius: var(--radius-sm);
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 260px;
+}
+
+.search-trigger:hover {
+  border-color: var(--border-strong);
+}
+
+.page-container {
+  padding: 24px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   Page Headers & Cards
+   ========================================================================== */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subdued);
+  padding-bottom: 12px;
+}
+
+.page-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.page-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subdued);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subdued);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+/* ==========================================================================
+   Status & Severity Badges
+   ========================================================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.badge-critical { background-color: var(--sev-crit-bg); color: var(--sev-crit-text); border: 1px solid var(--sev-crit-border); }
+.badge-high     { background-color: var(--sev-high-bg); color: var(--sev-high-text); border: 1px solid var(--sev-high-border); }
+.badge-medium   { background-color: var(--sev-med-bg);  color: var(--sev-med-text);  border: 1px solid var(--sev-med-border); }
+.badge-low      { background-color: var(--sev-low-bg);  color: var(--sev-low-text);  border: 1px solid var(--sev-low-border); }
+.badge-info     { background-color: var(--sev-info-bg); color: var(--sev-info-text); border: 1px solid var(--sev-info-border); }
+
+.badge-active   { background-color: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; }
+.badge-not-evaluated { background-color: #f1f5f9; color: #475569; border: 1px dashed #cbd5e1; }
+.badge-not-connected { background-color: #fffbeb; color: #92400e; border: 1px dashed #fde68a; }
+.badge-coming-soon   { background-color: #eef2ff; color: #3730a3; border: 1px dashed #c7d2fe; }
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-subdued);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface);
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+table.data-table th {
+  background-color: var(--bg-canvas);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subdued);
+  white-space: nowrap;
+}
+
+table.data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subdued);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+table.data-table tr:hover td {
+  background-color: #f8fafc;
+}
+
+table.data-table tr.clickable {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Drawers & Modals
+   ========================================================================== */
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 50;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawer-panel {
+  width: 640px;
+  max-width: 100vw;
+  background-color: var(--bg-surface);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.drawer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subdued);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-panel {
+  width: 540px;
+  max-width: 100%;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-subdued);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subdued);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  background-color: var(--bg-canvas);
+  border-top: 1px solid var(--border-subdued);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   Buttons & Controls
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.btn-secondary:hover {
+  background-color: var(--bg-hover);
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* Tabs */
+.tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border-subdued);
+  gap: 4px;
+}
+
+.tab-button {
+  padding: 8px 14px;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab-button:hover {
+  color: var(--text-primary);
+}
+
+.tab-button.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+  font-weight: 600;
+}

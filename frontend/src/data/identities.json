@@ -1,0 +1,304 @@
+[
+  {
+    "sanitized_id": "IAMUser-02",
+    "raw_actor_name": "bert-jan",
+    "actor_type": "IAMUser",
+    "total_events": 2642,
+    "error_count": 239,
+    "services": [
+      "autoscaling",
+      "ce",
+      "cloudtrail",
+      "devops-guru",
+      "ec2",
+      "elasticloadbalancing",
+      "guardduty",
+      "health",
+      "iam",
+      "kms",
+      "lambda",
+      "logs",
+      "monitoring",
+      "notifications",
+      "organizations",
+      "ram",
+      "rds",
+      "resource-explorer-2",
+      "rolesanywhere",
+      "route53resolver",
+      "s3",
+      "secretsmanager",
+      "securityhub",
+      "servicecatalog-appregistry",
+      "signin",
+      "ssm",
+      "sts"
+    ],
+    "first_seen": "2023-07-10T11:54:33+00:00",
+    "last_seen": "2023-07-10T12:34:46+00:00",
+    "findings_count": 42,
+    "tier_breakdown": {
+      "detonation": 166,
+      "warmup": 932,
+      "operator": 1006,
+      "background": 538
+    }
+  },
+  {
+    "sanitized_id": "IAMUser-01",
+    "raw_actor_name": "benjamin",
+    "actor_type": "IAMUser",
+    "total_events": 105,
+    "error_count": 14,
+    "services": [
+      "account",
+      "health",
+      "iam",
+      "notifications",
+      "route53",
+      "s3"
+    ],
+    "first_seen": "2023-07-10T11:42:18+00:00",
+    "last_seen": "2023-07-10T12:37:50+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 0,
+      "warmup": 0,
+      "operator": 0,
+      "background": 105
+    }
+  },
+  {
+    "sanitized_id": "AWSService-01",
+    "raw_actor_name": "unknown",
+    "actor_type": "AWSService",
+    "total_events": 76,
+    "error_count": 0,
+    "services": [
+      "ec2",
+      "s3",
+      "secretsmanager",
+      "sts"
+    ],
+    "first_seen": "2023-07-10T11:55:22+00:00",
+    "last_seen": "2023-07-10T12:32:00+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 0,
+      "warmup": 0,
+      "operator": 0,
+      "background": 76
+    }
+  },
+  {
+    "sanitized_id": "Role-09",
+    "raw_actor_name": "AROATFQR7NSCWWVLB7BES:aws-go-sdk-1688990082523310002",
+    "actor_type": "AssumedRole",
+    "total_events": 29,
+    "error_count": 29,
+    "services": [
+      "ec2"
+    ],
+    "first_seen": "2023-07-10T11:54:47+00:00",
+    "last_seen": "2023-07-10T11:54:50+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 29,
+      "warmup": 0,
+      "operator": 0,
+      "background": 0
+    }
+  },
+  {
+    "sanitized_id": "Role-04",
+    "raw_actor_name": "AROATFQR7NSC6Q6YRQ2Q7:i-0dbc91f429e48eeed",
+    "actor_type": "AssumedRole",
+    "total_events": 15,
+    "error_count": 0,
+    "services": [
+      "ec2",
+      "ssm",
+      "sts"
+    ],
+    "first_seen": "2023-07-10T11:57:16+00:00",
+    "last_seen": "2023-07-10T12:07:39+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 0,
+      "warmup": 0,
+      "operator": 0,
+      "background": 15
+    }
+  },
+  {
+    "sanitized_id": "Role-08",
+    "raw_actor_name": "AROATFQR7NSCWCZMFXMXZ:aws-go-sdk-1688990565286187801",
+    "actor_type": "AssumedRole",
+    "total_events": 15,
+    "error_count": 15,
+    "services": [
+      "ec2"
+    ],
+    "first_seen": "2023-07-10T12:02:55+00:00",
+    "last_seen": "2023-07-10T12:02:57+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 15,
+      "warmup": 0,
+      "operator": 0,
+      "background": 0
+    }
+  },
+  {
+    "sanitized_id": "Role-05",
+    "raw_actor_name": "AROATFQR7NSCQNEXZHIOB:i-05c30218156bcc246",
+    "actor_type": "AssumedRole",
+    "total_events": 8,
+    "error_count": 0,
+    "services": [
+      "ssm"
+    ],
+    "first_seen": "2023-07-10T12:05:15+00:00",
+    "last_seen": "2023-07-10T12:07:06+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 0,
+      "warmup": 0,
+      "operator": 0,
+      "background": 8
+    }
+  },
+  {
+    "sanitized_id": "Role-07",
+    "raw_actor_name": "AROATFQR7NSCRR66DMFTC:SLRManagement",
+    "actor_type": "AssumedRole",
+    "total_events": 4,
+    "error_count": 0,
+    "services": [
+      "ec2"
+    ],
+    "first_seen": "2023-07-10T12:15:59+00:00",
+    "last_seen": "2023-07-10T12:32:01+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 0,
+      "warmup": 0,
+      "operator": 0,
+      "background": 4
+    }
+  },
+  {
+    "sanitized_id": "Role-01",
+    "raw_actor_name": "AROATFQR7NSC3K2SEQDM2:MandoService2842426183934887787",
+    "actor_type": "AssumedRole",
+    "total_events": 1,
+    "error_count": 0,
+    "services": [
+      "ec2"
+    ],
+    "first_seen": "2023-07-10T11:55:24+00:00",
+    "last_seen": "2023-07-10T11:55:24+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 0,
+      "warmup": 0,
+      "operator": 0,
+      "background": 1
+    }
+  },
+  {
+    "sanitized_id": "Role-06",
+    "raw_actor_name": "AROATFQR7NSCRI4ZA26CX:aws-go-sdk-1688990515440126480",
+    "actor_type": "AssumedRole",
+    "total_events": 1,
+    "error_count": 1,
+    "services": [
+      "organizations"
+    ],
+    "first_seen": "2023-07-10T12:02:05+00:00",
+    "last_seen": "2023-07-10T12:02:05+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 1,
+      "warmup": 0,
+      "operator": 0,
+      "background": 0
+    }
+  },
+  {
+    "sanitized_id": "Role-02",
+    "raw_actor_name": "AROATFQR7NSC3K2SEQDM2:MandoService364061179539770931",
+    "actor_type": "AssumedRole",
+    "total_events": 1,
+    "error_count": 0,
+    "services": [
+      "ec2"
+    ],
+    "first_seen": "2023-07-10T12:04:10+00:00",
+    "last_seen": "2023-07-10T12:04:10+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 0,
+      "warmup": 0,
+      "operator": 0,
+      "background": 1
+    }
+  },
+  {
+    "sanitized_id": "Role-03",
+    "raw_actor_name": "AROATFQR7NSC4RHD6IN2N:aws-go-sdk-1688990797103471741",
+    "actor_type": "AssumedRole",
+    "total_events": 1,
+    "error_count": 1,
+    "services": [
+      "ec2"
+    ],
+    "first_seen": "2023-07-10T12:06:42+00:00",
+    "last_seen": "2023-07-10T12:06:42+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 1,
+      "warmup": 0,
+      "operator": 0,
+      "background": 0
+    }
+  },
+  {
+    "sanitized_id": "Role-10",
+    "raw_actor_name": "AROATFQR7NSCYGNOX4QAJ:aws-go-sdk-1688990966084647983",
+    "actor_type": "AssumedRole",
+    "total_events": 1,
+    "error_count": 1,
+    "services": [
+      "ec2"
+    ],
+    "first_seen": "2023-07-10T12:09:31+00:00",
+    "last_seen": "2023-07-10T12:09:31+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 1,
+      "warmup": 0,
+      "operator": 0,
+      "background": 0
+    }
+  },
+  {
+    "sanitized_id": "IAMUser-03",
+    "raw_actor_name": "stratus-red-team-nmfalu-gfjyeaypjt",
+    "actor_type": "IAMUser",
+    "total_events": 1,
+    "error_count": 0,
+    "services": [
+      "signin"
+    ],
+    "first_seen": "2023-07-10T12:23:15+00:00",
+    "last_seen": "2023-07-10T12:23:15+00:00",
+    "findings_count": 0,
+    "tier_breakdown": {
+      "detonation": 1,
+      "warmup": 0,
+      "operator": 0,
+      "background": 0
+    }
+  }
+]

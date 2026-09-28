@@ -1,0 +1,8 @@
+{
+  "total_records": 2900,
+  "time_start": "2023-07-10T11:42:18+00:00",
+  "time_end": "2023-07-10T12:37:50+00:00",
+  "distinct_services": 29,
+  "distinct_actors": 14,
+  "distinct_apis": 260
+}

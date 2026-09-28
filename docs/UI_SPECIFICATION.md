@@ -1,80 +1,62 @@
-# RAM Cloud Security — UI Specification & Presentation Layouts
+# RAM Cloud Security — Master UI/UX Product Design Specification
 
-## 1. Design Principles & Aesthetics
-- **Visual Style:** Modern, premium dark-mode interface with clean typography, high-contrast severity badging (Red: Critical, Orange: High, Yellow: Medium, Green: Normal), and responsive interactive charts.
-- **Goal:** Make complex security research, multi-stage attack timelines, and comparative ML metrics transparent and interactive.
+## 1. Executive Summary & Design System Architecture
+
+RAM Cloud Security is an enterprise-grade cloud security operations and machine learning research platform. The user experience is built around the **Anti-Slop Design Doctrine**: calm, high-contrast, data-dense, technical, and trustworthy.
+
+The full UI/UX design specification is organized into six core architectural documents:
+
+1. [`docs/UI_UX_SYSTEM.md`](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_UX_SYSTEM.md) — Visual design foundation, neutral light surfaces, strict semantic palette, typography scale, and 8-state handling matrix.
+2. [`docs/UI_INFORMATION_ARCHITECTURE.md`](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_INFORMATION_ARCHITECTURE.md) — 7-domain hierarchy, complete route map, shell anatomy, and universal search/filter contracts.
+3. [`docs/UI_SCREEN_SPECIFICATION.md`](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_SCREEN_SPECIFICATION.md) — Exhaustive screen layouts, component hierarchies, and interactive behaviors for all 15 screens (A through O).
+4. [`docs/UI_COMPONENT_SYSTEM.md`](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_COMPONENT_SYSTEM.md) — Reusable component contracts (`SeverityBadge`, `DataTable`, `DetailDrawer`, `FigureCard`, `ActionModal`, `DualPanelHeatmap`).
+5. [`docs/UI_DATA_CONTRACTS.md`](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_DATA_CONTRACTS.md) — End-to-end data provenance connecting UI metrics to active JSON/pipeline sources with dynamic calculation rules.
+6. [`docs/UI_FUTURE_MODULES.md`](file:///c:/Users/lakha/ml_ram_antivirous/docs/UI_FUTURE_MODULES.md) — Research integrity protocol for representing future modules (`Not Evaluated`, `Not Connected`, `Coming Soon`) without fake data.
 
 ---
 
-## 2. Planned Application Navigation
+## 2. Complete Navigation Taxonomy (7 Operational Domains)
 
 ```
-+-----------------------------------------------------------------------------------+
-|  [RAM Cloud Security]   Overview | Dataset & EDA | Findings | Investigation | Experiments | Response  |
-+-----------------------------------------------------------------------------------+
+RAM Cloud Security Console
+├── 1. SECURITY
+│   ├── Overview Dashboard (/security/overview) [Active]
+│   ├── Security Findings (/security/findings) [Active]
+│   └── Incident Investigation (/security/investigation) [Active]
+├── 2. ENVIRONMENT
+│   ├── Assets Inventory (/environment/assets) [Connected]
+│   ├── Identities & IAM (/environment/identities) [Connected]
+│   ├── Workloads (/environment/workloads) [Coming Soon]
+│   └── Network & VPC (/environment/network) [Coming Soon]
+├── 3. POSTURE
+│   ├── Misconfigurations (/posture/misconfigurations) [Active]
+│   ├── Vulnerabilities (/posture/vulnerabilities) [Not Connected]
+│   ├── Compliance Frameworks (/posture/compliance) [Coming Soon]
+│   └── Exposure (/posture/exposure) [Active]
+├── 4. DETECTION
+│   ├── Event Telemetry Explorer (/detection/events) [Active]
+│   ├── Threat Activity (/detection/threats) [Active]
+│   └── Attack Sequences (/detection/sequences) [Not Evaluated]
+├── 5. RESEARCH
+│   ├── Dataset Provenance (/research/dataset) [Active]
+│   ├── EDA Explorer (14 Figures) (/research/eda) [Active]
+│   ├── Experiments & Benchmark (/research/experiments) [Active]
+│   └── Evaluation Protocol (/research/evaluation) [Active]
+├── 6. RESPONSE
+│   ├── Response Center (/response/center) [Active (Simulated)]
+│   └── Action Audit History (/response/history) [Active (Simulated)]
+└── 7. ADMINISTRATION
+    ├── Telemetry Integrations (/admin/integrations) [Active]
+    ├── Detection Policies (/admin/policies) [Active]
+    └── System Settings (/admin/settings) [Active]
 ```
 
 ---
 
-## 3. Screen Specifications
+## 3. Core Investigation & Research User Journeys
 
-### 3.1 Page 1: Overview Dashboard
-- **Top Metrics Row:**
-  - Total Telemetry Processed (`2,900` events)
-  - Security Findings (`42` findings)
-  - Critical Alerts (`15` critical)
-  - Active Monitored Principals (`13` actors)
-- **Visualizations:**
-  - Severity Breakdown Donut Chart
-  - Recent Findings Table (Title, Severity, Identity, Resource, Time, Action Button)
-  - Event Ingestion Rate Sparkline
+### 3.1 Security Analyst Triage Journey
+$$\text{Overview Dashboard} \longrightarrow \text{Finding Drawer} \longrightarrow \text{Rule Evidence} \longrightarrow \text{Identity Profile (Fig 13)} \longrightarrow \text{Preview Response [Dry Run]} \longrightarrow \text{Action History}$$
 
----
-
-### 3.2 Page 2: Dataset & EDA Explorer
-- **Summary Cards:** Dataset Name, Provenance (Invictus-IR / Stratus Red Team), Time Duration (55.5 mins), Services (29), APIs (260).
-- **Interactive Chart Grid:**
-  - *Panel 1:* 4-Tier Activity Distribution (Pure Detonation vs Warmup vs Operator vs Background).
-  - *Panel 2:* Top AWS Services Bar Chart.
-  - *Panel 3:* Event Arrival Density Timeline (1-min bins).
-  - *Panel 4:* MITRE ATT&CK Tactic Distribution.
-  - *Panel 5:* Error Rate & Top Error Codes Breakdown.
-- **Dataset Card Drawer:** Embedded view of [`docs/DATASET_CARD.md`](file:///c:/Users/lakha/ml_ram_antivirous/docs/DATASET_CARD.md) and provenance details.
-
----
-
-### 3.3 Page 3: Security Findings Explorer
-- **Filter Controls:** Filter by Detection Type (`RULE`, `ML_ANOMALY`, `HYBRID`), Severity, Rule ID, Actor Name.
-- **Finding Detail Modal:**
-  - Title & Severity Badge
-  - Detailed Description & Recommended Action
-  - Forensic Evidence JSON Viewer
-  - MITRE ATT&CK Tactic & Technique Tag
-  - Contributing Features (for ML/Hybrid findings)
-
----
-
-### 3.4 Page 4: Incident & Attack Investigation Timeline
-- **Actor Selector:** Choose an IAM principal (e.g., `bert-jan`, Assumed Role session).
-- **Interactive Progression Timeline:**
-  - Visual swimlane showing events moving across tactics: Discovery $\to$ Credential Access $\to$ Privilege Escalation $\to$ Defense Evasion.
-  - Linked raw event drawer displaying request parameters, source IP, user agent category, and error status.
-
----
-
-### 3.5 Page 5: Research Experiments & Benchmark Leaderboard
-- **Model Comparison Table:**
-
-| Model / Paradigm | Precision | Recall | F1-Score | PR-AUC | Technique Recall | Latency |
-|---|---|---|---|---|---|---|
-| **Baseline A (Rules Only)** | 54.76% | 2.01% | 0.0387 | — | 20.48% (17/83) | 6.0s |
-| **Baseline B (ML Only)** | *[Phase 4]* | *[Phase 4]* | *[Phase 4]* | *[Phase 4]* | *[Phase 4]* | *[Phase 4]* |
-| **Proposed Evidence Fusion** | *[Phase 6]* | *[Phase 6]* | *[Phase 6]* | *[Phase 6]* | *[Phase 6]* | *[Phase 6]* |
-
-- **Interactive Visualizations:** Confusion Matrix Heatmap, Precision-Recall Curves, Ablation Study Comparison Bars.
-
----
-
-### 3.6 Page 6: Safe Response Orchestrator (Policy-Gated)
-- **Response Queue:** Planned containment actions generated from findings.
-- **Safety Indicators:** `DRY_RUN = True` badge, Simulated Action Log, Required Human Authorization PIN/Token.
+### 3.2 Academic / Researcher Evaluation Journey
+$$\text{Dataset Provenance} \longrightarrow \text{EDA Gallery (14 Figs)} \longrightarrow \text{Baseline A Benchmark} \longrightarrow \text{Evaluation Metrics Protocol} \longrightarrow \text{Phase 4 ML Roadmap}$$

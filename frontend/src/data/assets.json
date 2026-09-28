@@ -1,0 +1,502 @@
+[
+  {
+    "resource_id": "arn:aws:s3:::stratus-red-team-bdbp-lhfzvgcamn",
+    "service": "s3",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:22:34+00:00",
+    "last_seen": "2023-07-10T12:28:37+00:00",
+    "event_count": 29,
+    "findings_count": 1,
+    "risk_level": "HIGH"
+  },
+  {
+    "resource_id": "arn:aws:kms:us-east-1:123837392027:key/0e5d0ab6-097e-49d8-99ef-747ce3e5f8f4",
+    "service": "kms",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:58:10+00:00",
+    "last_seen": "2023-07-10T12:08:04+00:00",
+    "event_count": 164,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeroutetables",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:11+00:00",
+    "last_seen": "2023-07-10T12:28:40+00:00",
+    "event_count": 163,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:iam:us-east-1:123837392027:resource/getuser",
+    "service": "iam",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:54:38+00:00",
+    "last_seen": "2023-07-10T12:28:39+00:00",
+    "event_count": 130,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ssm:us-east-1:123837392027:resource/describeparameters",
+    "service": "ssm",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:58:10+00:00",
+    "last_seen": "2023-07-10T12:08:10+00:00",
+    "event_count": 122,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ssm:us-east-1:123837392027:resource/listtagsforresource",
+    "service": "ssm",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:58:11+00:00",
+    "last_seen": "2023-07-10T12:08:10+00:00",
+    "event_count": 82,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:kms:us-east-1:123837392027:key/dad21b23-9915-42bd-981b-2a9f3c8f20c8",
+    "service": "kms",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:57:49+00:00",
+    "last_seen": "2023-07-10T12:07:57+00:00",
+    "event_count": 76,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/getsecretvalue",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:57:50+00:00",
+    "last_seen": "2023-07-10T12:07:57+00:00",
+    "event_count": 60,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describenatgateways",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:15+00:00",
+    "last_seen": "2023-07-10T12:28:08+00:00",
+    "event_count": 54,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:health:us-east-1:123837392027:resource/describeeventaggregates",
+    "service": "health",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:42:38+00:00",
+    "last_seen": "2023-07-10T12:37:50+00:00",
+    "event_count": 48,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describevpcattribute",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:10+00:00",
+    "last_seen": "2023-07-10T12:28:34+00:00",
+    "event_count": 48,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:rds:us-east-1:123837392027:resource/describeorderabledbinstanceoptions",
+    "service": "rds",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:28:29+00:00",
+    "last_seen": "2023-07-10T12:28:52+00:00",
+    "event_count": 45,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describevpcs",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:08+00:00",
+    "last_seen": "2023-07-10T12:28:38+00:00",
+    "event_count": 43,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeaccountattributes",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:54:33+00:00",
+    "last_seen": "2023-07-10T12:28:19+00:00",
+    "event_count": 40,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describesubnets",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:13+00:00",
+    "last_seen": "2023-07-10T12:28:34+00:00",
+    "event_count": 40,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:s3:::stratus-red-team-ctlr-bucket-zqfsvooxqj",
+    "service": "s3",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:00:24+00:00",
+    "last_seen": "2023-07-10T12:08:10+00:00",
+    "event_count": 40,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:iam:us-east-1:123837392027:resource/listattachedrolepolicies",
+    "service": "iam",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:54:41+00:00",
+    "last_seen": "2023-07-10T12:28:34+00:00",
+    "event_count": 39,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/getresourcepolicy",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:57:48+00:00",
+    "last_seen": "2023-07-10T12:07:56+00:00",
+    "event_count": 39,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ssm:us-east-1:123837392027:resource/deleteparameter",
+    "service": "ssm",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:08:13+00:00",
+    "last_seen": "2023-07-10T12:08:20+00:00",
+    "event_count": 38,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/describesecret",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:57:47+00:00",
+    "last_seen": "2023-07-10T12:07:56+00:00",
+    "event_count": 36,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:rds:us-east-1:123837392027:resource/describedbinstances",
+    "service": "rds",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:15:36+00:00",
+    "last_seen": "2023-07-10T12:29:09+00:00",
+    "event_count": 35,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:iam:us-east-1:123837392027:resource/listrolepolicies",
+    "service": "iam",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:54:41+00:00",
+    "last_seen": "2023-07-10T12:28:40+00:00",
+    "event_count": 33,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:s3:::stratus-red-team-ctes-bucket-qyxyekjbtk",
+    "service": "s3",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:59:57+00:00",
+    "last_seen": "2023-07-10T12:08:06+00:00",
+    "event_count": 32,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:iam:us-east-1:123837392027:resource/getrole",
+    "service": "iam",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:54:40+00:00",
+    "last_seen": "2023-07-10T12:28:33+00:00",
+    "event_count": 31,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describesecuritygroups",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:12+00:00",
+    "last_seen": "2023-07-10T12:28:34+00:00",
+    "event_count": 30,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/getpassworddata",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:54:47+00:00",
+    "last_seen": "2023-07-10T11:54:50+00:00",
+    "event_count": 29,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:s3:::stratus-red-team-olc-bucket-xhfgzaowxc",
+    "service": "s3",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:26:37+00:00",
+    "last_seen": "2023-07-10T12:28:38+00:00",
+    "event_count": 29,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ssm:us-east-1:123837392027:resource/describeinstanceinformation",
+    "service": "ssm",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:56:47+00:00",
+    "last_seen": "2023-07-10T11:57:16+00:00",
+    "event_count": 27,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:s3:::stratus-red-team-backdoor-f-bucket-ufamgrrnmw",
+    "service": "s3",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:25:25+00:00",
+    "last_seen": "2023-07-10T12:28:40+00:00",
+    "event_count": 27,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeavailabilityzones",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:06+00:00",
+    "last_seen": "2023-07-10T12:28:33+00:00",
+    "event_count": 26,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describenetworkacls",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:11+00:00",
+    "last_seen": "2023-07-10T12:28:34+00:00",
+    "event_count": 26,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeinstanceattribute",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:33+00:00",
+    "last_seen": "2023-07-10T12:08:03+00:00",
+    "event_count": 25,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ssm:us-east-1:123837392027:resource/putparameter",
+    "service": "ssm",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:58:13+00:00",
+    "last_seen": "2023-07-10T11:58:21+00:00",
+    "event_count": 25,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeinternetgateways",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:13+00:00",
+    "last_seen": "2023-07-10T12:28:36+00:00",
+    "event_count": 24,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:rds:us-east-1:123837392027:resource/describedbengineversions",
+    "service": "rds",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:28:21+00:00",
+    "last_seen": "2023-07-10T12:28:27+00:00",
+    "event_count": 21,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeimages",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:06+00:00",
+    "last_seen": "2023-07-10T12:28:33+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeaddresses",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:08+00:00",
+    "last_seen": "2023-07-10T12:28:31+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describevpcclassiclink",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:09+00:00",
+    "last_seen": "2023-07-10T12:28:33+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describevpcclassiclinkdnssupport",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:10+00:00",
+    "last_seen": "2023-07-10T12:28:33+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describeinstances",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:24+00:00",
+    "last_seen": "2023-07-10T12:27:54+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/createsecret",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:57:47+00:00",
+    "last_seen": "2023-07-10T11:57:48+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/putsecretvalue",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:57:49+00:00",
+    "last_seen": "2023-07-10T11:57:50+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/startsecretversiondelete",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:08:04+00:00",
+    "last_seen": "2023-07-10T12:08:27+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/endsecretversiondelete",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:08:04+00:00",
+    "last_seen": "2023-07-10T12:08:27+00:00",
+    "event_count": 20,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describenetworkinterfaces",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:15+00:00",
+    "last_seen": "2023-07-10T12:28:35+00:00",
+    "event_count": 19,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:secretsmanager:us-east-1:123837392027:resource/deletesecret",
+    "service": "secretsmanager",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:07:59+00:00",
+    "last_seen": "2023-07-10T12:07:59+00:00",
+    "event_count": 17,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:s3:us-east-1:123837392027:resource/listaccesspoints",
+    "service": "s3",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:42:44+00:00",
+    "last_seen": "2023-07-10T12:29:48+00:00",
+    "event_count": 16,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:sts:us-east-1:123837392027:resource/getcalleridentity",
+    "service": "sts",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:54:38+00:00",
+    "last_seen": "2023-07-10T12:28:33+00:00",
+    "event_count": 15,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:rds:us-east-1:123837392027:resource/describedbsnapshots",
+    "service": "rds",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T12:20:09+00:00",
+    "last_seen": "2023-07-10T12:28:37+00:00",
+    "event_count": 15,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  },
+  {
+    "resource_id": "arn:aws:ec2:us-east-1:123837392027:resource/describevolumes",
+    "service": "ec2",
+    "region": "us-east-1",
+    "first_seen": "2023-07-10T11:55:34+00:00",
+    "last_seen": "2023-07-10T12:28:34+00:00",
+    "event_count": 14,
+    "findings_count": 0,
+    "risk_level": "LOW"
+  }
+]
