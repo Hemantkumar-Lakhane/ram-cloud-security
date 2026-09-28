@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { dataService } from '../services/dataService';
 import type { AssetRecord, IdentityRecord } from '../types';
 import { FutureStateBanner } from '../components/Badges';
+import { InteractiveIdentityMatrix } from '../components/charts/InteractiveIdentityMatrix';
 
 export const AssetsInventory: React.FC = () => {
   const [assets, setAssets] = useState<AssetRecord[]>([]);
@@ -85,18 +86,17 @@ export const IdentitiesMonitor: React.FC = () => {
         <span className="badge badge-active">14 Sanitized Principals</span>
       </div>
 
-      {/* Embedded Figure 13 (Principal-to-Service Matrix) */}
+      {/* Interactive Principal-to-Service Matrix (replaces static Figure 13) */}
       <div className="card">
         <div className="card-header">
-          <span style={{ fontSize: '13px', fontWeight: 600 }}>Principal-to-Service Interaction Matrix (Raw Counts vs Access Profile %)</span>
-          <span className="badge badge-info">Figure 13 (Dual-Panel)</span>
+          <div>
+            <span style={{ fontSize: '13px', fontWeight: 600 }}>Principal-to-Service Interaction Heatmap</span>
+            <span style={{ fontSize: '11px', color: '#64748b', marginLeft: '8px' }}>Hover cells to inspect volume and principal share</span>
+          </div>
+          <span className="badge badge-active">Live Interactive</span>
         </div>
-        <div style={{ padding: '12px', background: '#f8fafc', display: 'flex', justifyContent: 'center' }}>
-          <img
-            src="/figures/eda/13_identity_service_relationship.png"
-            alt="Figure 13"
-            style={{ maxWidth: '100%', height: '260px', objectFit: 'contain', background: '#ffffff', borderRadius: '4px', border: '1px solid #e2e8f0' }}
-          />
+        <div className="card-body">
+          <InteractiveIdentityMatrix identities={identities} />
         </div>
       </div>
 

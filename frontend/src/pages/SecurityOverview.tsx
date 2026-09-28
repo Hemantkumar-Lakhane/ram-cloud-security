@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { dataService } from '../services/dataService';
-import type { SecurityFinding, EDASummary, BaselineMetrics } from '../types';
+import type { SecurityFinding, EDASummary, BaselineMetrics, TelemetryEvent } from '../types';
 import { SeverityBadge } from '../components/Badges';
-import { Shield, Activity, Users, Layers, ExternalLink } from 'lucide-react';
+import { InteractiveTimeline } from '../components/charts/InteractiveTimeline';
+import { InteractiveTierDonut } from '../components/charts/InteractiveTierDonut';
+import { InteractiveSeverityGauge } from '../components/charts/InteractiveSeverityGauge';
+import { InteractiveServiceDistribution } from '../components/charts/InteractiveServiceDistribution';
+import { Shield, Activity, Users, Layers, ExternalLink, ArrowUpRight, FlaskConical } from 'lucide-react';
 
 export const SecurityOverview: React.FC<{
   onSelectFinding: (finding: SecurityFinding) => void;
   onNavigate: (route: string) => void;
 }> = ({ onSelectFinding, onNavigate }) => {
   const [findings, setFindings] = useState<SecurityFinding[]>([]);
+  const [events, setEvents] = useState<TelemetryEvent[]>([]);
   const [eda, setEDA] = useState<EDASummary | null>(null);
   const [baseline, setBaseline] = useState<BaselineMetrics | null>(null);
+  const [selectedSeverity, setSelectedSeverity] = useState<string>('ALL');
 
   useEffect(() => {
     dataService.getFindings().then(setFindings);
+    dataService.getEvents().then(setEvents);
     dataService.getEDASummary().then(setEDA);
     dataService.getBaselineMetrics().then(setBaseline);
   }, []);
+
+  const filteredFindings = selectedSeverity === 'ALL'
+    ? findings
+    : findings.filter(f => f.severity === selectedSeverity);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -29,8 +40,9 @@ export const SecurityOverview: React.FC<{
           </span>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>
-          <button className="btn btn-secondary btn-sm" onClick={() => onNavigate('/research/eda')}>
-            View All 14 EDA Figures
+          <button className="btn btn-secondary btn-sm" onClick={() => onNavigate('/research/eda')} style={{ gap: '4px' }}>
+            <FlaskConical size={13} color="#9333ea" />
+            Research Analytics
           </button>
           <button className="btn btn-primary btn-sm" onClick={() => onNavigate('/security/findings')}>
             Triage 42 Findings
@@ -38,7 +50,7 @@ export const SecurityOverview: React.FC<{
         </div>
       </div>
 
-      {/* Zone 1: Restrained Status Strip (Anti-Slop Compact Single Strip) */}
+      {/* Zone 1: Restrained Status Strip */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 1fr)',
@@ -90,44 +102,81 @@ export const SecurityOverview: React.FC<{
         </div>
       </div>
 
-      {/* Zone 2: Telemetry Dynamics (Figure 09 & Figure 01) */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '16px' }}>
+      {/* Zone 2: Real Interactive Charts Grid (Interactive Timeline & Interactive Donut) */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr', gap: '16px' }}>
         <div className="card">
           <div className="card-header">
-            <span style={{ fontSize: '13px', fontWeight: 600 }}>Event Ingestion Rate (1-Min Velocity Density)</span>
-            <span className="badge badge-info">Figure 09</span>
+            <div>
+              <span style={{ fontSize: '13px', fontWeight: 600 }}>Event Ingestion Rate (Interactive 1-Min Velocity)</span>
+              <span style={{ fontSize: '11px', color: '#64748b', marginLeft: '8px' }}>Hover to inspect minute-level APIs and tier breakdowns</span>
+            </div>
+            <span className="badge badge-active">Live Interactive</span>
           </div>
-          <div style={{ padding: '12px', background: '#f8fafc', display: 'flex', justifyContent: 'center' }}>
-            <img
-              src="/figures/eda/09_event_timeline.png"
-              alt="Figure 09"
-              style={{ maxWidth: '100%', height: '230px', objectFit: 'contain', background: '#ffffff', borderRadius: '4px', border: '1px solid #e2e8f0' }}
-            />
+          <div className="card-body">
+            <InteractiveTimeline events={events} eda={eda} height={230} />
           </div>
         </div>
 
         <div className="card">
           <div className="card-header">
-            <span style={{ fontSize: '13px', fontWeight: 600 }}>Operational Activity Tier Breakdown</span>
-            <span className="badge badge-info">Figure 01</span>
+            <div>
+              <span style={{ fontSize: '13px', fontWeight: 600 }}>Operational Activity Classification</span>
+              <span style={{ fontSize: '11px', color: '#64748b', marginLeft: '8px' }}>4 Audited Tiers ($N=2,900$)</span>
+            </div>
+            <span className="badge badge-active">Live Interactive</span>
           </div>
-          <div style={{ padding: '12px', background: '#f8fafc', display: 'flex', justifyContent: 'center' }}>
-            <img
-              src="/figures/eda/01_dataset_activity_distribution.png"
-              alt="Figure 01"
-              style={{ maxWidth: '100%', height: '230px', objectFit: 'contain', background: '#ffffff', borderRadius: '4px', border: '1px solid #e2e8f0' }}
+          <div className="card-body" style={{ display: 'flex', justifyContent: 'center' }}>
+            <InteractiveTierDonut
+              eda={eda}
+              size={210}
+              onSelectTier={() => onNavigate('/detection/events')}
             />
           </div>
         </div>
       </div>
 
-      {/* Zone 3: Priority Findings Live Triage Table */}
+      {/* Zone 3: Interactive Severity Triage & AWS Service Breakdown */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+        <div className="card">
+          <div className="card-header">
+            <div>
+              <span style={{ fontSize: '13px', fontWeight: 600 }}>Active Rule Finding Severity Filter</span>
+              <span style={{ fontSize: '11px', color: '#64748b', marginLeft: '8px' }}>Click pill to filter triage queue below</span>
+            </div>
+            <span className="badge badge-info">{findings.length} Alerts</span>
+          </div>
+          <div className="card-body">
+            <InteractiveSeverityGauge
+              findings={findings}
+              activeSeverity={selectedSeverity}
+              onSelectSeverity={setSelectedSeverity}
+            />
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-header">
+            <div>
+              <span style={{ fontSize: '13px', fontWeight: 600 }}>Monitored Service & Operation Distribution</span>
+              <span style={{ fontSize: '11px', color: '#64748b', marginLeft: '8px' }}>CloudTrail volume per provider</span>
+            </div>
+            <span className="badge badge-active">Live Interactive</span>
+          </div>
+          <div className="card-body">
+            <InteractiveServiceDistribution eda={eda} height={90} />
+          </div>
+        </div>
+      </div>
+
+      {/* Zone 4: Priority Findings Live Triage Table */}
       <div className="card">
         <div className="card-header">
           <div>
-            <span style={{ fontSize: '13px', fontWeight: 600 }}>High-Priority Security Alerts</span>
+            <span style={{ fontSize: '13px', fontWeight: 600 }}>
+              {selectedSeverity === 'ALL' ? 'High-Priority Security Alerts' : `${selectedSeverity} Severity Security Alerts`}
+            </span>
             <span style={{ fontSize: '12px', color: '#64748b', marginLeft: '8px' }}>
-              Showing top unhandled detections from Deterministic Baseline A
+              Showing {filteredFindings.length} active detections from Deterministic Baseline A
             </span>
           </div>
           <button className="btn btn-secondary btn-sm" onClick={() => onNavigate('/security/findings')}>
@@ -149,7 +198,7 @@ export const SecurityOverview: React.FC<{
               </tr>
             </thead>
             <tbody>
-              {findings.slice(0, 7).map((f) => (
+              {filteredFindings.slice(0, 6).map((f) => (
                 <tr key={f.finding_id} className="clickable" onClick={() => onSelectFinding(f)}>
                   <td><SeverityBadge severity={f.severity} /></td>
                   <td style={{ fontWeight: 600, color: '#0f172a' }}>{f.title}</td>
@@ -161,7 +210,7 @@ export const SecurityOverview: React.FC<{
                   <td style={{ fontSize: '12px', color: '#64748b' }}>{f.timestamp.replace('T', ' ').substring(0, 19)}</td>
                   <td>
                     <button className="btn btn-secondary btn-sm" onClick={(e) => { e.stopPropagation(); onSelectFinding(f); }}>
-                      Investigate
+                      Investigate <ArrowUpRight size={12} />
                     </button>
                   </td>
                 </tr>
